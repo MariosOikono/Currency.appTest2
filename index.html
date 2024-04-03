@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter with Vue.js</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="header">Check your money value</h1>
+        <label for="amount" class="label">Enter Amount</label>
+        <input class="amountInput" type="number" v-model="amount"><br>
+        <label for="fromCurrency" class="label">From</label>
+        <select v-model="fromCurrency">
+            <option v-for="(rate, currency) in rates" :value="currency">{{ currency }}</option>
+        </select>
+        <label for="toCurrency" class="label">To</label>
+        <select v-model="toCurrency">
+            <option v-for="(rate, currency) in rates" :value="currency">{{ currency }}</option>
+        </select>
+
+        <button @click="convertAmount" class="btn">Convert</button>
+        <div class="amount">Amount: {{ convertedAmount }}</div><br>
+        <div class="line"></div>
+        <label for="newCurrency" class="label">Add Currency</label>
+        <input class="currency" type="text" v-model="newCurrency">
+        <label for="newRate" class="label">Add Rate</label>
+        <input class="rate" type="number" v-model="newRate"><br>
+        <button @click="addCurrency" class="addNewCurrency">Add</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
